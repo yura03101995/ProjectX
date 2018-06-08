@@ -78,20 +78,59 @@
 
 \section
   {Main Body}
+  
 \begin{frame}
-  {Обзор методов}
+  {Данные}
+  Использовался датасет Marsyas((Music Analysis, Retrieval, and Synthesis for Audio Signal)
+    
+  \begin{figure}[t]
+    \centering
+    \includegraphics[width = 0.95\linewidth]{header}
+  \end{figure}
+  
+  \textbf{Описание датасета}
+  \begin{itemize}
+      \item состоит из 1000 аудио треков по 30 секунд каждый;
+      \item все файлы разделены на 10 жанров();
+      \item каждому жанру соответствует 100 треков;
+  \end{itemize}
 
-Основой признакового пространства служат MFCC коэффициенты.
 
-\begin{itemize}
-      \item k-means, k-
-      \item Ручная разметка стоит дорого
-      \item Широкий спектр применений: поиск, сортировка музыки
-      \item Pandora, Spotify
+\end{frame}
+
+
+
+\begin{frame}{Обзор литературы}
+  \textbf{M. Haggblade, Y. Hong: "Music Genre Classification"}
+  \begin{itemize}
+      \item Базовые признаки -- MFCC-коэффициенты
+      \item \texttt{Идея}: Применить k-means, k-Nearest Neighbors (k-NN) и много-классовую SVM для полученных признаков используя в качестве расстояния KL-дивергенцию. А так же обучить нейронную сеть.
+  \end{itemize}
+    \begin{figure}[t]
+    \centering
+    \includegraphics[width = 0.95\linewidth]{nn-structure}
+  \end{figure}
+\end{frame}
+\begin{frame}
+  \textbf{G. Tzanetakis: "Musical Genre Classification of Audio Signals"}
+  \begin{itemize}
+      \item Базовые признаки -- MFCC-коэффициенты
+      \item Модифицированные признаки:
+      \begin{itemize}
+          \item текстура тембра;
+          \item спектральный спад частотной характеристики;
+          \item спектральный поток;
+          \item анализ и текстура фрейма и т.д.;
+      \end{itemize}
+      \item \texttt{Идея}: для инициализации GMM класификатора с диагональной матрицей ковариации используется k-means, стартующий из случайных точек.
   \end{itemize}
   
-  
-\end{frame}
+  \textbf{Joakim Anden: "Deep Scattering Spectrum"}
+  \begin{itemize}
+      \item Интересное: для улучшения качества предсказания вместо MFCC-коэффициентов используется scatter MFCC.
+  \end{itemize}
+\end{frame}  
+
 
 \begin{frame}
   {Equations}
