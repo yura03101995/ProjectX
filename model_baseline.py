@@ -40,7 +40,9 @@ class CNN(nn.Module):
         super(CNN, self).__init__()
         
         self.conv2d_1 = nn.Conv2d(1, 3, kernel_size=(10, 39), stride=4, bias=True)
+        self.relu_1 = nn.ReLU()
         self.conv2d_2 = nn.Conv2d(3, 15, kernel_size=(10, 1), stride=4, bias=True)
+        self.relu_2 = nn.ReLU()
         self.conv2d_3 = nn.Conv2d(15, 65, kernel_size=(10, 1), stride=4, bias=True)
         #self.avgpool = nn.AvgPool()
         self.fc = nn.Linear(65, num_classes, bias=True)
@@ -55,7 +57,9 @@ class CNN(nn.Module):
 
     def forward(self, x):
         x = self.conv2d_1(x)
+        x = self.relu_1(x)
         x = self.conv2d_2(x)
+        x = self.relu_2(x)
         x = self.conv2d_3(x)
         x = x.view(x.size(0), -1)
         x = self.fc(x)
