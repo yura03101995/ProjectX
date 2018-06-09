@@ -1,0 +1,1 @@
+epoch,num_batch,loss,accuracy,agg_loss,agg_acc,lr,time_on_batch
